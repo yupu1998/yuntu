@@ -23,7 +23,7 @@
       <div style="Text-align:left;">点击你要更改的编队人员再点击你要添加的人形即可完成编队,双击退出编队</div>
       <div v-for="e in groupList" :key="e.index">
         <el-row>
-          <div style="font-size:medium;width: 100px;">{{ e.name }}</div>
+          <el-input v-model="e.name" style="width: 100px;"></el-input>
           <div v-for="(code, k) of e.group" :key="k" @click="selectGroupSite(e.index, k)">
             <el-card class="gallery" :body-style="{ padding: '1px' }">
               <img :src=getImg(code) />
@@ -43,7 +43,6 @@ import { ref } from "vue";
 import { occupationName } from "../../enum/Chinese";
 import { friendCamp } from "../../utils/otherDataUtils"
 import { roleListUtil } from "../tsUtils/roleInfo/function"
-
 import { groupListUtil } from "../tsUtils/groupInfo/function"
 import { getImg, getRoleName } from '../tsUtils/groupInfo/data'
 
