@@ -3,7 +3,7 @@
  * 返回人形数据对象
  */
  import { LocalFileAdreess } from "../../../enum/LocalFileAdress";
- import { roleTotalAttribute } from "../../../dto/storageDtos";
+ import { roleTotalAttribute,roleAllAttribute } from "../../../dto/storageDtos";
  import { getRoleImg } from "../../../store/image";
  import { occupationName, campName } from "../../../enum/Chinese";
  import { Camp } from "../../../enum/baseEnum"
@@ -16,7 +16,7 @@
 export const getLocalData = () => {
     //获取本地保存的人形数据
     const localInfoData = localStorage.getItem(LocalFileAdreess.ROLE_INFO) as string;
-    const roleDefaultData: { [key: string]: roleTotalAttribute } = JSON.parse(localInfoData);
+    const roleDefaultData: { [key: string]: roleAllAttribute } = JSON.parse(localInfoData);
     
     const list: Array<ListObj> = [];
     for (const code in roleDefaultData) {
@@ -37,7 +37,7 @@ export const getLocalData = () => {
   export const getRoleAttributeData = () => {
     
     const localInfoData = localStorage.getItem(LocalFileAdreess.ROLE_INFO) as string;
-    const roleDefaultData: { [key: string]: roleTotalAttribute } = JSON.parse(localInfoData);
+    const roleDefaultData: { [key: string]: roleAllAttribute } = JSON.parse(localInfoData);
     
     return roleDefaultData;
   };

@@ -1,10 +1,10 @@
-import {roleTotalAttribute} from '../dto/storageDtos'
+import {roleAllAttribute} from '../dto/storageDtos'
 import {Occupation,IsLong,AttentionPosition,Camp} from '../enum/baseEnum'
 
 /**
  * 标靶的默认数据
  */
-export const defaultTargetData:roleTotalAttribute = 
+export const defaultTargetData:roleAllAttribute = 
 {
     "name":"靶子",
     "range":4,

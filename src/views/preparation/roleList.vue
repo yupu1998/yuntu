@@ -27,17 +27,13 @@
 </template>
   
 <script lang="ts" setup>
-import { ref, watch } from "vue";
-import { LocalFileAdreess } from "../../enum/LocalFileAdress";
+import { ref } from "vue";
 import { occupationName } from "../../enum/Chinese";
-import { roleTotalAttribute } from "../../dto/storageDtos";
 import SingleRole from "./SingleRole.vue";
 import {friendCamp} from "../../utils/otherDataUtils"
 import {roleListUtil} from "../tsUtils/roleInfo/function"
-import {getRoleAttributeData} from '../tsUtils/roleInfo/data'
 
 const isRoleView = ref(false);
-const roleData = ref(getRoleAttributeData());
 const role = ref("");
 const campList = friendCamp()
 const {roleList,filiter} = roleListUtil()
@@ -48,15 +44,7 @@ const selectRole = (k: string) => {
   isRoleView.value = true;
 };
 
-watch(
-  //监听人物属性变化，将数据保存至本地
-  () => role.value as unknown as { code: string, value: roleTotalAttribute },
-  (newValue: { code: string, value: roleTotalAttribute }) => {
-    roleData.value[newValue.code] = newValue.value
-    localStorage.setItem(LocalFileAdreess.ROLE_INFO, JSON.stringify(roleData.value))
-  },
-  { deep: true }
-);
+
 </script>
 
 <style lang="scss" scoped>

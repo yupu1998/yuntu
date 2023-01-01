@@ -6,8 +6,8 @@
 
   </el-row>
   <el-row>
-    <el-table :data="dockerList" border style="padding: 0px; width: 720px ;height:500px;">
-      <el-table-column :width="tableWidth" prop="type" label="属性">
+    <el-table :data="dockerList" border style="padding: 0px; width: 715px ;height:500px;">
+      <el-table-column width="100px" prop="type" label="属性">
       </el-table-column>
       <el-table-column :width="tableWidth" prop="defaultValue" label="基础数值">
       </el-table-column>
@@ -19,7 +19,7 @@
       </el-table-column>
       <el-table-column :width="tableWidth" prop="update" label="刻印加成">
       </el-table-column>
-      <el-table-column :width="tableWidth" type="number" prop="gua" label="科技加成">
+      <el-table-column width="100px" type="number" prop="gua" label="科技加成">
         <template #default="scope">
           <el-input v-model="scope.row.gua" type="number" min="-10000"></el-input>
         </template>
@@ -48,13 +48,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, defineProps, defineEmits, watch } from "vue";
-import { RoleBaseAttribute } from '../../enum/baseEnum'
+import { ref, defineProps, defineEmits } from "vue";
 import { getRoleName } from '../tsUtils/groupInfo/data'
-import { getRoleAlgoFunc } from '../tsUtils/algoData/function'
 import algorithmEquipment from "./algorithmEquipment.vue";
 import { initialData } from "../tsUtils/roleData/function"
-import { updateRoleData } from "../tsUtils/roleData/data";
+
 const props = defineProps({
   role: {
     type: String,
@@ -65,12 +63,10 @@ const props = defineProps({
 });
 
 const role = ref(props.role as string)
-const tableWidth = ref("90px");
+const tableWidth = "85px";
 const update = ref(0)
-const { dockerList, rolefinalData,algoData,algoStructure } = initialData(props.role as string)
+const { dockerList,algoData,algoStructure,saveData } = initialData(props.role as string)
 
-// const { algoData, algoStructure } = getRoleAlgoFunc(props.role as string, rolefinalData.value.occupation as string)
-//console.log(rolefinalData.value);
 
 const emits = defineEmits(["update:isRoleView"]);
 
@@ -79,10 +75,7 @@ const clickReturn = () => {
 };
 
 const clickSave = () => {
-  for (let newdata of dockerList.value) {
-    rolefinalData.value[RoleBaseAttribute[newdata.code]] = newdata.final;
-  }
-  updateRoleData(role.value, rolefinalData.value)
+  saveData()
 };
 
 const clearData = () => {
@@ -90,13 +83,6 @@ const clearData = () => {
     newdata.gua = 0;
   }
 };
-
-
-watch(()=>algoData.value,(val)=>{
-  console.log(val);
-
-  
-},{deep:true})
 
 
 </script>

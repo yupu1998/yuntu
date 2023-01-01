@@ -20,9 +20,46 @@
     DAMAGE_INCREASE = "damageIncrease",
     DAMAGE_REDUCE = "damageReduce",
     TREATMENT = "treatment",
-    //UPDATE = "update",
 }
 
+
+/**
+ * 人形数值属性枚举
+ */
+export enum RoleNumberAttribute {
+   
+    HP = "hp",
+    ATTACK = "attack",
+    POWER = "power",
+    PHYSICAL_DEFENSE = "physicalDefense",
+    POWER_DEFENSE = "powerDefense",
+    ATTACK_SPEED = "attackSpeed",
+    CRITICAL_HIT_RATE = "criticalHitRate",
+    CRITICAL_DAMAGE = "criticalDamage",
+    PHYSICAL_PENETRATION = "physicalPenetration",
+    POWER_PENETRATION = "powerPenetration",
+    DODGE = "dodge",
+    REGENERATION = "regeneration",
+    RAPIDLY = "rapidly",
+    RESISTANCE = "resistance",
+    REFLEXIVE = "reflexive",
+    DAMAGE_INCREASE = "damageIncrease",
+    DAMAGE_REDUCE = "damageReduce",
+    TREATMENT = "treatment",
+    BY_TREATMENT = "byTreatment",//被治疗效果
+    SPEED = "speed",
+    POWER_INCRERASE = "powerIncrease",
+    PHYSCIAL_INCREASE = "physcialIncrease",
+    SKILL_INCREASE = "skillIncrease",
+    ATTACK_INCREASE = "attackIncrease",
+    POWER_REDUCE = "powerReduce",
+    PHYSCIAL_REDUCE = "physcialReduce",
+    SKILL_REDUCE = "skillReduce",
+    ATTACK_REDUCE = "attackReduce",
+    ATTACK_RECOVERY = "attackRecovery",//普攻吸血
+    RECOVERY_5 = "recovery5",//每5s回血
+    RANGE = "range",
+}
 /**
  * 人形属性枚举
  */
@@ -65,6 +102,9 @@ export enum RoleAttribute {
     CAMP = "camp",
     UPDATE = "update",
 }
+
+
+
 /**
  * 职业枚举
  * GUARD: 守卫

@@ -57,14 +57,11 @@ export interface roleBaseAttribute {
  * physcialReduce: 物理减伤 百分比
  * skillReduce: 技能减伤 百分比
  * attackReduce: 技能增伤 百分比
- * occupation: 职业
- * isLong: 近战/远程
- * attentionPosition: 立场 （友方，敌方，中立）
- * camp: 阵营  (公司///，召唤物，熵，净化者)
- * update:刻印等级
+ * byTreatment：受到治疗效果
+ * attackRecovery：普攻吸血
+ * recovery5：每5s回血
  */
 export interface roleTotalAttribute extends roleBaseAttribute {
-  name: string,
   speed: number,
   range: number,
   powerIncrease: number,
@@ -75,10 +72,21 @@ export interface roleTotalAttribute extends roleBaseAttribute {
   physcialReduce: number,
   skillReduce: number,
   attackReduce: number,
-  occupation: Occupation,
   byTreatment:number,
   attackRecovery:number,
   recovery5:number,
+}
+/**
+ * name:名字
+ * occupation: 职业
+ * isLong: 近战/远程
+ * attentionPosition: 立场 （友方，敌方，中立）
+ * camp: 阵营  (公司///，召唤物，熵，净化者)
+ * update:刻印等级
+ */
+export interface roleAllAttribute extends roleTotalAttribute{
+  name: string,
+  occupation: Occupation,
   isLong: IsLong,
   attentionPosition: AttentionPosition,
   camp: Camp,

@@ -34,6 +34,19 @@ export const getRoleAlgoInfo = (code:string,occupation:string)=>{
     return res
 }
 
+/**
+ * 保存人形的算法数据
+ * @param code 
+ * @param algo 
+ */
+export const saveRoleAlgoInfo = (code:string,algo:roleAlgoObj)=>{
+    const res:roleAlgos = {A:algo.A.algo,B:algo.B.algo,C:algo.C.algo}
+    const localInfoData = localStorage.getItem(LocalFileAdreess.ROLE_ALGO) as string;
+    const allAlgoInfo = JSON.parse(localInfoData) as{ [key: string]: roleAlgos }
+    allAlgoInfo[code] = res
+    localStorage.setItem(LocalFileAdreess.ROLE_ALGO,JSON.stringify(allAlgoInfo));
+}
+
 
 export const getImg = (code:string)=>{
     if (code=="yes"){

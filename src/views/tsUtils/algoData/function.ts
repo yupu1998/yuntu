@@ -1,7 +1,7 @@
 
 import { singleAlgorithm } from "@/dto/algorithmDto";
 import { ref, watch } from "vue";
-import { getRoleAlgoInfo } from "./data"
+import { getRoleAlgoInfo,saveRoleAlgoInfo } from "./data"
 import { areaAlgo, algoDraw, areaType, portType } from './interface'
 
 import { A_AlgoSuit } from "../../../enum/algorithmEnum"
@@ -16,6 +16,10 @@ export const getRoleAlgoFunc = (role: string, occupation: string) => {
         B: analysis(algoData.value.B),
         C: analysis(algoData.value.C),
     })
+
+    const saveAlgo = ()=>{
+        saveRoleAlgoInfo(role,algoData.value)
+    }
     watch(
         //监听到筛选条件变化，更新界面
         () => algoData.value,
@@ -28,7 +32,7 @@ export const getRoleAlgoFunc = (role: string, occupation: string) => {
         },
         { deep: true,}
     );
-    return { algoData,algoStructure }
+    return { algoData,algoStructure,saveAlgo }
 }
 
 /**

@@ -1,9 +1,9 @@
-import {roleTotalAttribute} from '../dto/storageDtos'
+import {roleAllAttribute} from '../dto/storageDtos'
 import {Occupation,IsLong,AttentionPosition,Camp,Update} from '../enum/baseEnum'
 import {roleName} from '../enum/Chinese'
 
 
-export const ZANGYIN:roleTotalAttribute = {
+export const ZANGYIN:roleAllAttribute = {
         "name":roleName.ZANGYIN,
         "range":4,
         "hp":11671,
@@ -43,7 +43,7 @@ export const ZANGYIN:roleTotalAttribute = {
         "update":Update.ZERO
 }
 
-export const KURO:roleTotalAttribute = {
+export const KURO:roleAllAttribute = {
     "name":roleName.KURO,
     "range":4,
     "hp":11671,
