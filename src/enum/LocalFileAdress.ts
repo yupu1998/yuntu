@@ -1,4 +1,4 @@
-import { singleDamageTest } from '../dto/storageDtos'
+import { simpleDamageTest } from '../dto/storageDtos'
 import {defaultTargetData} from '../store/defaultAttribute'
 import * as baseRole  from '../store/baseRole'
 import {GroupAndName} from '../dto/storageDtos'
@@ -11,7 +11,7 @@ export enum LocalFileAdreess {
     ROLE_INFO = 'roleInfoJson',//保存角色属性和套装效果的Json文件
     GROUP_INFO = 'groupInfoJson',//保存编队
     ALGORITHM_STROE = 'algorithmStore',//保存算法的仓库
-    DAMAGE_TEST_SINGLE_ROLE = 'damageTestSingleRole',//伤害测试，打靶的靶子数据
+    DAMAGE_TEST_SINGLE_Target = 'damageTestSingleTarget',//检查伤害测试，打靶测试
     ROLE_ALGO = 'roleAlgo',//保存人形算法配置
 }
 
@@ -76,10 +76,10 @@ const initialAlgoStore = () =>{
  * 初始化伤害打靶标靶数据
  */
 const initialSingleTargetTestData = () =>{
-    const singleRoleDamageTest = localStorage.getItem(LocalFileAdreess.DAMAGE_TEST_SINGLE_ROLE)
+    const singleRoleDamageTest = localStorage.getItem(LocalFileAdreess.DAMAGE_TEST_SINGLE_Target)
     if (singleRoleDamageTest == null){
-        const singleRole:singleDamageTest = {role:"ZANGYIN",target:defaultTargetData,rules:[],functions:[]}
-        localStorage.setItem(LocalFileAdreess.DAMAGE_TEST_SINGLE_ROLE,JSON.stringify(singleRole))
+        const singleRole:simpleDamageTest = {group:0,target:defaultTargetData,rules:[],functions:[]}
+        localStorage.setItem(LocalFileAdreess.DAMAGE_TEST_SINGLE_Target,JSON.stringify(singleRole))
     }
 }
 /**

@@ -13,8 +13,8 @@
     </div>
     <div class="mainView">
       <preparationView v-if="isdisplay == 'home0'"></preparationView>
-      <!-- <damageTestView v-if="isdisplay == 'home1'"></damageTestView>
-      <TestView v-if="isdisplay == 'home6'"></TestView> -->
+      <damageTestView v-if="isdisplay == 'home1'"></damageTestView>
+      <!-- <TestView v-if="isdisplay == 'home6'"></TestView> -->
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@ import {
 } from "vue";
 // import TestView from './TestView.vue'
 import preparationView from './myPreparation.vue'
-// import damageTestView from './damageTest.vue'
+import damageTestView from './damageTest.vue'
 
 const isdisplay = ref<string>('home0')
 const handleSelect = (key: string) => {

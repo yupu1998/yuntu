@@ -134,13 +134,13 @@ export interface GroupAndName {
 
 /**
  * 单人伤害测试对象
- * role：测试人员
+ * group：队伍名称
  * target: 靶机属性
  * rule: 协议列表
  * functions: 函数列表
  */
-export interface singleDamageTest {
-  role: string,
+export interface simpleDamageTest {
+  group: number,
   target: roleTotalAttribute,
   rules: Array<string>,
   functions: Array<string>,
