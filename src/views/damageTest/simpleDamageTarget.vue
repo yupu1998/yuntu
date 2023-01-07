@@ -11,7 +11,7 @@
             <el-button v-if="viewIndex < 5" @click="clickNext">确定</el-button>
             <el-button v-if="viewIndex > 0" @click="returnLast">返回</el-button>
         </el-row>
-        <div>
+        <div class="stepView">
             <selectGroup v-if="viewIndex == 0" v-model="groupName"></selectGroup>
             <setTargetDataVue v-if="viewIndex == 1" v-model="targetData"></setTargetDataVue>
             <selectRulesVue v-if="viewIndex == 2" v-model="ruleArr"></selectRulesVue>
@@ -50,5 +50,9 @@ const returnLast = () => {
 .prepare {
     width: 100%;
     height: 100%;
+    .stepView{
+        width: 100%;
+        height: 500px;
+    }
 }
 </style>
