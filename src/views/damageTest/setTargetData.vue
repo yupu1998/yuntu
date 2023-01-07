@@ -1,70 +1,50 @@
 <template>
-  <div class="inputView"
-      v-for="(e,v) in targetData" 
-      :key="v"
-      >
-      <div class="demo-input-suffix">
-      {{e.name}}
-      <el-input v-model="e.value" type="number" min = "0" :max = "e.max"></el-input>
+  <div class="inputView" v-for="(e, v) in targetData" :key="v">
+    <div class="demo-input-suffix">
+      {{ e.name }}
+      <el-input v-model="e.value" type="number" min="0" :max="e.max"></el-input>
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref, watch, watchEffect,defineProps,defineEmits } from "vue";
-import {LocalFileAdreess} from "../../enum/LocalFileAdreess";
-import occupationEnum from "../../enum/occupation";
-import roleOccupationEnum from "../../enum/roleOccupation";
-import attribute from "../../enum/attribute";
+<script lang="ts" setup>
+import { ref, watch, defineProps, defineEmits } from "vue";
+// import {LocalFileAdreess} from "../../enum/LocalFileAdreess";
+// import occupationEnum from "../../enum/occupation";
+// import roleOccupationEnum from "../../enum/roleOccupation";
+import { RoleBaseAttribute } from "../../enum/baseEnum";
 const props = defineProps({
   modelValue: {
-  type: Object
-}
+    type: Object
+  }
 });
 const emits = defineEmits(['update:modelValue'])
-const targetData = ref({})
-let localInfoData = localStorage.getItem(LocalFileAdreess.DAMAGE_TEST_SINGLE_TARGET)
+const targetData = ref<{ code: RoleBaseAttribute, name: string, value: number, max: number }[]>([])
 
-if (localInfoData === null){
-  let initalObj = {}
-  initalObj[attribute.HP.code] = 100000
-  initalObj[attribute.PHYSICAL_DEFENSE.code] = 1000
-  initalObj[attribute.POWER_DEFENSE.code] = 1000
-  initalObj[attribute.DODGE.code] = 0
-  initalObj[attribute.DAMAGE_REDUCE.code] = 0
-  localStorage.setItem(LocalFileAdreess.DAMAGE_TEST_SINGLE_TARGET,JSON.stringify(initalObj))
-  localInfoData = initalObj
-}else{
-  localInfoData = JSON.parse(localInfoData)
+const initial = () => {
+  if (props.modelValue) {
+    targetData.value.push({ code: RoleBaseAttribute.HP, name: "最大生命", value: props.modelValue[RoleBaseAttribute.HP], max: 1000000000 })
+    targetData.value.push({ code: RoleBaseAttribute.PHYSICAL_DEFENSE, name: "物理防御", value: props.modelValue[RoleBaseAttribute.PHYSICAL_DEFENSE], max: 20000 })
+    targetData.value.push({ code: RoleBaseAttribute.POWER_DEFENSE, name: "算量防御", value: props.modelValue[RoleBaseAttribute.POWER_DEFENSE], max: 20000 })
+    targetData.value.push({ code: RoleBaseAttribute.DODGE, name: "闪避", value: props.modelValue[RoleBaseAttribute.DODGE], max: 100 })
+    targetData.value.push({ code: RoleBaseAttribute.DAMAGE_REDUCE, name: "减伤", value: props.modelValue[RoleBaseAttribute.DAMAGE_REDUCE], max: 100 })
+  }
 }
+initial()
 
-targetData.value[attribute.HP.code] = {name:attribute.HP.name,value:localInfoData[attribute.HP.code],max:999999999}
-targetData.value[attribute.PHYSICAL_DEFENSE.code] = {name:attribute.PHYSICAL_DEFENSE.name,value:localInfoData[attribute.PHYSICAL_DEFENSE.code],max:99999}
-targetData.value[attribute.POWER_DEFENSE.code] = {name:attribute.POWER_DEFENSE.name,value:localInfoData[attribute.POWER_DEFENSE.code],max:99999}
-targetData.value[attribute.DODGE.code] = {name:attribute.DODGE.name,value:localInfoData[attribute.DODGE.code],max:100}
-targetData.value[attribute.DAMAGE_REDUCE.code] = {name:attribute.DAMAGE_REDUCE.name,value:localInfoData[attribute.DAMAGE_REDUCE.code],max:100}
-console.log(targetData.value)
-
-const clickSave = ()=>{
-  emits('update:modelValue',targetData.value)
-  let initalObj = {}
-  initalObj[attribute.HP.code] = targetData.value[attribute.HP.code].value
-  initalObj[attribute.PHYSICAL_DEFENSE.code] = targetData.value[attribute.PHYSICAL_DEFENSE.code].value
-  initalObj[attribute.POWER_DEFENSE.code] = targetData.value[attribute.POWER_DEFENSE.code].value
-  initalObj[attribute.DODGE.code] = targetData.value[attribute.DODGE.code].value
-  initalObj[attribute.DAMAGE_REDUCE.code] = targetData.value[attribute.DAMAGE_REDUCE.code].value
-  console.log(initalObj)
-  localStorage.setItem(LocalFileAdreess.DAMAGE_TEST_SINGLE_TARGET,JSON.stringify(initalObj))
-}
-const returnLast = ()=>{
-  emits('update:modelValue','return')
-}
-
-
-
-
+watch(() => targetData.value, (val) => {
+  if (props.modelValue) {
+    const tmp = props.modelValue
+    val.forEach((getvalue) => {
+      tmp[getvalue.code] = Number(getvalue.value)
+    })
+    
+    emits('update:modelValue',tmp)
+  }
+},{deep:true})
 
 </script>
 
 <style lang="scss" scoped>
+
 </style>

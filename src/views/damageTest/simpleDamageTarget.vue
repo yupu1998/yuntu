@@ -11,11 +11,11 @@
       <el-button v-if="viewIndex <5" @click="clickNext">确定</el-button>
       <el-button v-if="viewIndex >0" @click="returnLast">返回</el-button>
     </el-row>
-    <div class="prepareView">
+    <div>
         <selectGroup v-if="viewIndex==0"  v-model:groupName="groupName"></selectGroup>
-        <!-- <setTargetDataVue v-model="targetData" v-if="viewIndex==1 "></setTargetDataVue> -->
-        <!-- <selectRulesVue v-model="ruleArr" v-if="viewIndex==2 "></selectRulesVue>
-        <selectFunctionVue v-model="functionArr" v-if="viewIndex==3 "></selectFunctionVue> -->
+        <setTargetDataVue v-if="viewIndex==1" v-model="targetData" ></setTargetDataVue>
+        <selectRulesVue  v-if="viewIndex==2" v-model="ruleArr"></selectRulesVue>
+        <selectFunctionVue v-model="functionArr" v-if="viewIndex==3 "></selectFunctionVue>
     </div>
 </div>
 
@@ -25,8 +25,8 @@
 import {ref,watch} from "vue";
 import selectGroup from "./selectGroup.vue"
 import setTargetDataVue from "./setTargetData.vue";
-// import selectFunctionVue from "./selectFunction.vue";
-// import selectRulesVue from "./selectRules.vue"
+import selectFunctionVue from "./selectFunction.vue";
+import selectRulesVue from "./selectRules.vue"
 import {initalDamageTestData} from "../tsUtils/damageTest/function"
 
 const viewIndex = ref(0)
@@ -46,15 +46,6 @@ const returnLast = () =>{
 .prepare{
 width: 100%;
 height: 100%;
-.prepareMenu{
-    width: 110px;
-    height: 100%;
-    float: left;
-}
-.prepareView{
-    height: 100%;
-    display: grid;  
-}
 }
 
 </style>

@@ -3,10 +3,10 @@
     <el-row>
     已选协议：
     <div 
-        v-for="(e) in selectedRule" 
-        :key="e.code"
+        v-for="e in selectedRule" 
+        :key="e"
         >
-        <el-button @click="deletedRule(e.code)">{{e.name}}</el-button>
+        <el-button @click="deletedRule(e)">{{ruleStore[e].name}}</el-button>
     </div>
     </el-row>
     <hr noshade size=2 align=center width=100%>
@@ -14,7 +14,6 @@
       :data="ruleList"
       style="width: 100%"
       @row-click="selectRule"
-      :row-class-name="tableRowClassName"
       >
       <el-table-column
         prop="name"
@@ -28,56 +27,50 @@
     </el-table>
   </template>
   
-  <script setup>
-  import { ref, watch, watchEffect,defineProps,defineEmits } from "vue";
-  import rulesEnum from "../../rules/rulesEnum"
-  import roleOccupationEnum from "../../enum/roleOccupation"
-  import attribute from "../../enum/attribute";
+  <script lang ="ts" setup>
+  import { ref, watch,defineProps,defineEmits } from "vue";
+  import * as ruleStore from "../../store/rule"
+  import { ruleObj } from "@/dto/battleInfoDto";
+  // import roleOccupationEnum from "../../enum/roleOccupation"
+  // import attribute from "../../enum/attribute";
   const props = defineProps({
     modelValue: {
-    type: Object
+    type: Array
   }
   });
   const emits = defineEmits(['update:modelValue'])
-  const ruleList = ref([])
-  const selectedRule = ref([])
-  console.log('选择协议')
-  console.log(props.modelValue)
+  const ruleList = ref<ruleObj[]>([])
+  const selectedRule = ref<string[]>([])
+  
 
-  for (let rule in rulesEnum){
-    ruleList.value.push(rulesEnum[rule])
+  const deletedRule = (e:string) =>{
+    selectedRule.value.splice(selectedRule.value.indexOf(e),1)
   }
-  const deletedRule = (e) =>{
-    for (let i in selectedRule.value){
-        if (selectedRule.value[i].code == e){
-            selectedRule.value.splice(i,1)
-        }
+  const selectRule = (e:ruleObj) =>{
+    if (selectedRule.value.indexOf(e.code) == -1){
+      selectedRule.value.push(e.code)
     }
   }
-    
-  
-  const selectRule = (e) =>{
-    let add = true
-    selectedRule.value.forEach(elment=>{
-        if (e ==elment ){
-            add = false
-        }
-    })
-    if(add){
-        selectedRule.value.push(e)
+  /**
+   * 初始化协议数组 未来可能加入筛选功能
+   */
+  const getRuleList = ()=>{
+    for (let i in ruleStore){
+      ruleList.value.push(ruleStore[i])
+    } 
+  }
+  const initial = ()=>{
+    if (props.modelValue){
+      selectedRule.value = props.modelValue as string[]
     }
+  }
 
-  }
-  const clickSave = ()=>{
-    emits('update:modelValue',selectedRule.value)
-  }
-  const returnLast = ()=>{
-    emits('update:modelValue','return')
-  }
+  getRuleList()
+  initial()
   
-  
-  
-  
+  watch(()=>selectedRule.value,(val)=>{
+    emits('update:modelValue',val)
+  },{deep:true})
   
   </script>
   
