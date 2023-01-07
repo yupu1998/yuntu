@@ -9,9 +9,6 @@
 
 <script lang="ts" setup>
 import { ref, watch, defineProps, defineEmits } from "vue";
-// import {LocalFileAdreess} from "../../enum/LocalFileAdreess";
-// import occupationEnum from "../../enum/occupation";
-// import roleOccupationEnum from "../../enum/roleOccupation";
 import { RoleBaseAttribute } from "../../enum/baseEnum";
 const props = defineProps({
   modelValue: {
@@ -38,10 +35,10 @@ watch(() => targetData.value, (val) => {
     val.forEach((getvalue) => {
       tmp[getvalue.code] = Number(getvalue.value)
     })
-    
-    emits('update:modelValue',tmp)
+
+    emits('update:modelValue', tmp)
   }
-},{deep:true})
+}, { deep: true })
 
 </script>
 

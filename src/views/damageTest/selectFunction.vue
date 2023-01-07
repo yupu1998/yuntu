@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, watchEffect, defineProps, defineEmits } from "vue";
+import { ref, watch, defineProps, defineEmits } from "vue";
 import * as funtionStore from "../../store/funtion"
 import { functionObj } from "@/dto/battleInfoDto";
 
