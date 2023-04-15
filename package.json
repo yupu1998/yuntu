@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "babylonjs": "5.42.0",
+    "babylonjs-loaders": "5.42.0",
     "element-plus": "2.2.21",
     "vue": "3.2.13"
   },

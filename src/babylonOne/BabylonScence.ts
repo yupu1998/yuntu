@@ -7,6 +7,11 @@ import {
     MeshBuilder,
     Vector3
 } from "@babylonjs/core"
+
+import {buildingBaseTerrain} from '../utils/terrainUtils'
+
+import { SimpleTerrain } from "@/store/terrain";
+
 export class BabylonScene {
     scene: Scene;
     engine: Engine;
@@ -19,12 +24,17 @@ export class BabylonScene {
     }
     CreateScene(): Scene {
         const scene = new Scene(this.engine);
-        const Camera = new ArcRotateCamera("camera", 0,0.8,10, new Vector3(0, 1, 0), this.scene);
+        const Camera = new ArcRotateCamera("camera",Math.PI/2,0.8, 12, new Vector3(-5, 6, 3.5), this.scene);
+        Camera.attachControl(this.canvas, true);
         const light = new HemisphericLight("light", new Vector3(0, 1, 0), this.scene);
         light.intensity = 0.8;
-        //3D Object
-        const ground = MeshBuilder.CreateGround("ground", { width: 10, height: 10 }, this.scene);
-
+        
+        //根据传入地形数据生成地形
+        //地形分层 1，基础地形层 平地，高台，坑，洞
+        //装饰层 创建一个平面 表面贴画
+        //效果层 增加加成效果 附加一层贴画
+        //地面地形层 在地格新增障碍建筑之类的地形
+        buildingBaseTerrain(scene,SimpleTerrain)
 
         return scene;
     }

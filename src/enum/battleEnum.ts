@@ -33,3 +33,53 @@ export enum functionSuitEnum{
     NO_SUIT = "",
     SHOOTER_DAMAGE_INCREASE = "shooterDamageIncrease"
 }
+
+/**
+ * 角色状态枚举
+ */
+export enum RoleStatus{
+    WAITTING,
+    BEFORE_ATTACK,
+    ATTACK,
+    AFTER_ATTACK,
+    BEFORE_SKILL1,
+    SKILL1,
+    AFTER_SKILL1,
+    BEFORE_SKILL2,
+    SKILL2,
+    AFTER_SKILL2,
+    BEFORE_SKILL3,
+    SKILL3,
+    AFTER_SKILL3
+}
+
+
+/**
+ * 伤害属性 算力伤害，物理伤害，真实伤害，绝对伤害
+ */
+export enum DamageAttr{
+    POWER,
+    PHYSCIAL,
+    REAL,
+    ABSOLUTE
+}
+
+/**
+ * 普攻 技能 被动 函数 协议 其他
+ */
+export enum DamageType{
+    ATTACk,
+    SKILL1,
+    SKILL2,
+    SKILL3,
+    FUNC,
+    RULE,
+    OTHER
+}
+
+/**
+ * 衍生非衍生
+ */
+export enum Deri{
+    YES,NO
+}
