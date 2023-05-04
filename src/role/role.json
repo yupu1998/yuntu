@@ -1,0 +1,13 @@
+
+
+
+
+{
+    "role":{
+        "note":"攻击前摇，攻击后摇，造成伤害",
+        "attack":{
+            "attackBefore":2,
+            "attackAfter":2
+        }
+    }
+}

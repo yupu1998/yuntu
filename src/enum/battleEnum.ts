@@ -36,21 +36,26 @@ export enum functionSuitEnum{
 
 /**
  * 角色状态枚举
+ * 等待
+ * 普攻前摇
+ * 普攻
+ * 普攻后摇
+ * 自动技能前摇
+ * 自动技能中
+ * 自动技能后摇
+ * 眩晕
+ * 其他
  */
 export enum RoleStatus{
     WAITTING,
-    BEFORE_ATTACK,
+    ATTACK_START,
     ATTACK,
-    AFTER_ATTACK,
-    BEFORE_SKILL1,
-    SKILL1,
-    AFTER_SKILL1,
-    BEFORE_SKILL2,
-    SKILL2,
-    AFTER_SKILL2,
-    BEFORE_SKILL3,
-    SKILL3,
-    AFTER_SKILL3
+    ATTACK_END,
+    SKILL_START,
+    SKILL,
+    SKILL_END,
+    XUANYUN,
+    ERROE
 }
 
 
@@ -69,9 +74,8 @@ export enum DamageAttr{
  */
 export enum DamageType{
     ATTACk,
-    SKILL1,
-    SKILL2,
-    SKILL3,
+    SKILL,
+    STATUS,
     FUNC,
     RULE,
     OTHER

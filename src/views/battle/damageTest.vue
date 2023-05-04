@@ -11,6 +11,8 @@ import { roleTotalAttribute } from "@/dto/storageDtos";
 import {initalDamageTestBattleRoleData,initialFunction} from ".././tsUtils/battle/function"
 import {Role} from "@/role/abstractRole"
 import {ZANGYIN,KURO} from "@/role/Cyber"
+import { SimpleTarget } from "@/role/TestEnemy";
+import { damageRecord } from "@/role/abstractDamage";
 // import roleOccupationEnum from "../../enum/roleOccupation"
 // import attribute from "../../enum/attribute";
 const props = defineProps({
@@ -36,6 +38,7 @@ const roleData = ref()
 const RoleArr = ref<Role[]>([])
 
 //存储造成伤害的数组
+const Damage:damageRecord[] = []
 
 //生产伤害的实体
 
@@ -47,12 +50,23 @@ const RoleArr = ref<Role[]>([])
 
 //测试开始
 const testRun=()=>{
+  console.log("测试执行任务")
    var i = 0
-   while (i<150){
+   while (i<150000){
     i = i+1
     RoleArr.value.forEach(element => {
      element.RoleRun()
+     element.damageByStatusList.forEach(damage=>{
+
+      damage.getDamage(element,RoleArr.value[1],undefined).forEach(da=>{
+        da.time = i
+        Damage.push(da)
+      })
+     })
     });
+    if (RoleArr.value[1].hp == 0){
+      break
+    }
    }
 }
 
@@ -68,7 +82,22 @@ const initial = ()=>{
 
   //生成人形对象
   RoleArr.value.push(new ZANGYIN("绿毛",roleData.value["ZANGYIN"]))
-  RoleArr.value.push(new KURO("喷子",roleData.value["KURO"]))
+  // RoleArr.value.push(new KURO("喷子",roleData.value["KURO"]))
+  RoleArr.value.push(new SimpleTarget("靶子",roleData.value["Aim"]))
+  //测试普攻状态是否正常返回
+  let i = 0
+  // while (i<150){
+  //   i+=1
+  //   RoleArr.value[0].attackProducer.run(true,100)
+  //   console.log(RoleArr.value[0].attackProducer.roleStatus)
+  // }
+  //测试技能状态是否正常返回
+  // while (i<150){
+  //   i+=1
+  //   RoleArr.value[0].skillProducer.run(true,2000)
+  //   console.log(RoleArr.value[0].skillProducer.roleStatus)
+  // }
+  
   //开始测试
   testRun()
 }
