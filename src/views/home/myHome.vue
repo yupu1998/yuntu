@@ -15,6 +15,7 @@
       <preparationView v-if="isdisplay == 'home0'"></preparationView>
       <damageTestView v-if="isdisplay == 'home1'"></damageTestView>
       <!-- <TestView v-if="isdisplay == 'home6'"></TestView> -->
+      <damageDist v-if="isdisplay == 'home6'"></damageDist>
     </div>
   </div>
 </template>
@@ -26,6 +27,7 @@ import {
 // import TestView from './TestView.vue'
 import preparationView from './myPreparation.vue'
 import damageTestView from './damageTest.vue'
+import damageDist from "@/views/charts/damageDist.vue"
 
 const isdisplay = ref<string>('home0')
 const handleSelect = (key: string) => {

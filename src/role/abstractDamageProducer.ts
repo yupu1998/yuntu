@@ -46,7 +46,7 @@ export class immediateDamageProducer extends abstractDamageProducer{
 
     getDamage(s:Role,t:Role,o:number|undefined=undefined):damageRecord[] {
         const damgeList:damageRecord[] = []
-        if(this.damageObj.isDamage()){
+        while(this.damageObj.isDamage()){
             damgeList.push(this.damageObj.getDamage(s,t,o))
         }
         if(damgeList.length>0)
@@ -54,6 +54,25 @@ export class immediateDamageProducer extends abstractDamageProducer{
         return damgeList
     }
 
+}
+
+/**
+ * 概率立刻伤害生产者
+ */
+export class probabilityImmediateDamageProducer extends immediateDamageProducer{
+    probability:number
+    constructor (status:RoleStatus,damage:Damage,pro:number){
+        super(status,damage)
+        this.probability = pro
+    }
+    run(roleStatus: RoleStatus) {
+        if (roleStatus == this.triggerStatus && Math.random()<this.probability){
+            this.damageObj.open()//打开技能
+            return true
+        }else{
+            return false
+        }
+    }
 }
 
 /**

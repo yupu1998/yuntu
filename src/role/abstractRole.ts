@@ -60,7 +60,7 @@ export abstract class Role {
         // console.log(attackT,skillT)
         //从二者选一个状态
         this.getOneStatus(attackT,skillT)
-        console.log(this.status)
+        // console.log(this.status)
     }
 
     /**

@@ -1,5 +1,6 @@
 <template>
   <hr noshade size=2 align=center width=100%>
+  <div>功能未实现</div>
   <el-row>
     已选协议：
     <div v-for="e in selectedRule" :key="e">

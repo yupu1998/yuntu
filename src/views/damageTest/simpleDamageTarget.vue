@@ -8,7 +8,7 @@
             <el-step title="开始战斗"></el-step>
         </el-steps>
         <el-row>
-            <el-button v-if="viewIndex < 5" @click="clickNext">确定</el-button>
+            <el-button v-if="viewIndex < 4" @click="clickNext">确定</el-button>
             <el-button v-if="viewIndex > 0" @click="returnLast">返回</el-button>
         </el-row>
         <div class="stepView">
