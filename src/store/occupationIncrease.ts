@@ -1,47 +1,47 @@
 import { AttributeAddObj } from '../dto/storageDtos'
-import { RoleAttribute } from '../enum/baseEnum'
+import { RoleNumberAttribute } from '../enum/baseEnum'
 import { AddOrPerAdd } from '../enum/operation'
 
 
 // 职业科技树加成
 export const GUARD:Array<AttributeAddObj> =[
     { 
-        "attribute":RoleAttribute.HP,
+        "attribute":RoleNumberAttribute.HP,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":1200
     },
     { 
-        "attribute":RoleAttribute.PHYSICAL_DEFENSE,
+        "attribute":RoleNumberAttribute.PHYSICAL_DEFENSE,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":31
     },
     { 
-        "attribute":RoleAttribute.RESISTANCE,
+        "attribute":RoleNumberAttribute.RESISTANCE,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":150
     },
     { 
-        "attribute":RoleAttribute.POWER_DEFENSE,
+        "attribute":RoleNumberAttribute.POWER_DEFENSE,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":31
     },
     { 
-        "attribute":RoleAttribute.HP,
+        "attribute":RoleNumberAttribute.HP,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":21
     },
     { 
-        "attribute":RoleAttribute.RAPIDLY,
+        "attribute":RoleNumberAttribute.RAPIDLY,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":20
     },
     { 
-        "attribute":RoleAttribute.PHYSICAL_DEFENSE,
+        "attribute":RoleNumberAttribute.PHYSICAL_DEFENSE,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":21
     },
     { 
-        "attribute":RoleAttribute.POWER_DEFENSE,
+        "attribute":RoleNumberAttribute.POWER_DEFENSE,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":21
     },
@@ -49,42 +49,42 @@ export const GUARD:Array<AttributeAddObj> =[
 
 export const SHOOTER:Array<AttributeAddObj> =[
     { 
-        "attribute":RoleAttribute.ATTACK,
+        "attribute":RoleNumberAttribute.ATTACK,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":38
     },
     { 
-        "attribute":RoleAttribute.CRITICAL_HIT_RATE,
+        "attribute":RoleNumberAttribute.CRITICAL_HIT_RATE,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":9
     },
     { 
-        "attribute":RoleAttribute.POWER,
+        "attribute":RoleNumberAttribute.POWER,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":38
     },
     { 
-        "attribute":RoleAttribute.PHYSICAL_PENETRATION,
+        "attribute":RoleNumberAttribute.PHYSICAL_PENETRATION,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":65
     },
     { 
-        "attribute":RoleAttribute.CRITICAL_DAMAGE,
+        "attribute":RoleNumberAttribute.CRITICAL_DAMAGE,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":18
     },
     { 
-        "attribute":RoleAttribute.ATTACK,
+        "attribute":RoleNumberAttribute.ATTACK,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":22
     },
     { 
-        "attribute":RoleAttribute.POWER,
+        "attribute":RoleNumberAttribute.POWER,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":22
     },
     { 
-        "attribute":RoleAttribute.PHYSICAL_PENETRATION,
+        "attribute":RoleNumberAttribute.PHYSICAL_PENETRATION,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":7
     },
@@ -92,42 +92,42 @@ export const SHOOTER:Array<AttributeAddObj> =[
 
 export const FIGHTER:Array<AttributeAddObj> =[
     { 
-        "attribute":RoleAttribute.ATTACK,
+        "attribute":RoleNumberAttribute.ATTACK,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":38
     },
     { 
-        "attribute":RoleAttribute.RESISTANCE,
+        "attribute":RoleNumberAttribute.RESISTANCE,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":150
     },
     { 
-        "attribute":RoleAttribute.POWER,
+        "attribute":RoleNumberAttribute.POWER,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":38
     },
     { 
-        "attribute":RoleAttribute.HP,
+        "attribute":RoleNumberAttribute.HP,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":1200
     },
     { 
-        "attribute":RoleAttribute.CRITICAL_HIT_RATE,
+        "attribute":RoleNumberAttribute.CRITICAL_HIT_RATE,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":9
     },
     { 
-        "attribute":RoleAttribute.ATTACK,
+        "attribute":RoleNumberAttribute.ATTACK,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":22
     },
     { 
-        "attribute":RoleAttribute.POWER,
+        "attribute":RoleNumberAttribute.POWER,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":22
     },
     { 
-        "attribute":RoleAttribute.HP,
+        "attribute":RoleNumberAttribute.HP,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":21
     },
@@ -135,37 +135,37 @@ export const FIGHTER:Array<AttributeAddObj> =[
 
 export const SPECIAL:Array<AttributeAddObj> =[
     { 
-        "attribute":RoleAttribute.ATTACK,
+        "attribute":RoleNumberAttribute.ATTACK,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":38
     },
     { 
-        "attribute":RoleAttribute.RAPIDLY,
+        "attribute":RoleNumberAttribute.RAPIDLY,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":25
     },
     { 
-        "attribute":RoleAttribute.POWER,
+        "attribute":RoleNumberAttribute.POWER,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":38
     },
     { 
-        "attribute":RoleAttribute.HP,
+        "attribute":RoleNumberAttribute.HP,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":1200
     },
     { 
-        "attribute":RoleAttribute.ATTACK,
+        "attribute":RoleNumberAttribute.ATTACK,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":22
     },
     { 
-        "attribute":RoleAttribute.POWER,
+        "attribute":RoleNumberAttribute.POWER,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":22
     },
     { 
-        "attribute":RoleAttribute.HP,
+        "attribute":RoleNumberAttribute.HP,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":21
     },
@@ -173,42 +173,42 @@ export const SPECIAL:Array<AttributeAddObj> =[
 
 export const PHYSICIAN:Array<AttributeAddObj> =[
     { 
-        "attribute":RoleAttribute.POWER,
+        "attribute":RoleNumberAttribute.POWER,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":38
     },
     { 
-        "attribute":RoleAttribute.RAPIDLY,
+        "attribute":RoleNumberAttribute.RAPIDLY,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":15
     },
     { 
-        "attribute":RoleAttribute.PHYSICAL_DEFENSE,
+        "attribute":RoleNumberAttribute.PHYSICAL_DEFENSE,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":31
     },
     { 
-        "attribute":RoleAttribute.TREATMENT,
+        "attribute":RoleNumberAttribute.TREATMENT,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":9
     },
     { 
-        "attribute":RoleAttribute.POWER_DEFENSE,
+        "attribute":RoleNumberAttribute.POWER_DEFENSE,
         "increaseMethod":AddOrPerAdd.ADD,
         "value":31
     },
     { 
-        "attribute":RoleAttribute.POWER,
+        "attribute":RoleNumberAttribute.POWER,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":22
     },
     { 
-        "attribute":RoleAttribute.PHYSICAL_DEFENSE,
+        "attribute":RoleNumberAttribute.PHYSICAL_DEFENSE,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":21
     },
     { 
-        "attribute":RoleAttribute.POWER_DEFENSE,
+        "attribute":RoleNumberAttribute.POWER_DEFENSE,
         "increaseMethod":AddOrPerAdd.PRECENTAGE,
         "value":21
     },

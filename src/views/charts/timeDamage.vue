@@ -4,7 +4,6 @@
 
 <script lang ="ts" setup>
 import { timeDamgeDto } from "@/dto/chartDto";
-import { randomInt } from "@/utils/dataUtils";
 import { Chart } from "@antv/g2"
 import { defineProps, onMounted } from "vue";
 

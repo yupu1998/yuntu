@@ -15,7 +15,7 @@
 </template>
 
 <script lang ="ts" setup>
-import { ref, watch, defineProps, defineEmits } from "vue";
+import { ref, defineProps } from "vue";
 import { roleAllAttribute } from "@/dto/storageDtos";
 import damageDist from "@/views/charts/damageDist.vue"
 import timeDamage from "../charts/timeDamage.vue";
@@ -103,7 +103,7 @@ const initial = () => {
   name.value.push("绿毛")
   name.value.push("喷子")
   //测试普攻状态是否正常返回
-  let i = 0
+  // let i = 0
   // while (i<150){
   //   i+=1
   //   RoleArr.value[0].attackProducer.run(true,100)

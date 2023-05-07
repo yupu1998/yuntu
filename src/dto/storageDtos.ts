@@ -1,4 +1,4 @@
-import { Occupation, IsLong, AttentionPosition, Camp, RoleAttribute,Update } from '../enum/baseEnum'
+import { Occupation, IsLong, AttentionPosition, Camp, RoleAttribute,Update, RoleNumberAttribute } from '../enum/baseEnum'
 import { AddOrPerAdd } from '../enum/operation'
 
 
@@ -101,7 +101,7 @@ export interface roleAllAttribute extends roleTotalAttribute{
  * value 加成值
  */
 export interface AttributeAddObj {
-  attribute: RoleAttribute,
+  attribute: RoleNumberAttribute,
   increaseMethod: AddOrPerAdd,
   value: number
 }

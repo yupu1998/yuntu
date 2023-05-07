@@ -9,7 +9,7 @@ import { AassistantAttr, BassistantAttr, CassistantAttr } from "../../../enum/al
 import { AlgoAreaName, AlgoSuitName, AlgoAttrName } from "../../../enum/Chinese"
 import { AttributeAddObj } from '../../../dto/storageDtos'
 import { AddOrPerAdd } from '../../../enum/operation'
-import { RoleAttribute } from "../../../enum/baseEnum";
+import { RoleAttribute, RoleNumberAttribute } from "../../../enum/baseEnum";
 import * as algoIncrease from '../../../enum/algorithmIncrease'
 import { algoInfo, filiterList } from './interface'
 /**
@@ -47,9 +47,9 @@ const getChineseName = (code: string|undefined, type: "area" | "suit" | "main" |
             text = text + attrInfo.value + "%"
         }
     }
-    if ([RoleAttribute.CRITICAL_HIT_RATE, RoleAttribute.CRITICAL_DAMAGE,
-    RoleAttribute.TREATMENT, RoleAttribute.DODGE,
-    RoleAttribute.RAPIDLY, RoleAttribute.DAMAGE_INCREASE, RoleAttribute.DAMAGE_REDUCE,].includes(attrInfo.attribute)) {
+    if ([RoleNumberAttribute.CRITICAL_HIT_RATE, RoleNumberAttribute.CRITICAL_DAMAGE,
+        RoleNumberAttribute.TREATMENT, RoleNumberAttribute.DODGE,
+        RoleNumberAttribute.RAPIDLY, RoleNumberAttribute.DAMAGE_INCREASE, RoleNumberAttribute.DAMAGE_REDUCE,].includes(attrInfo.attribute)) {
         text = text + "%"
     }
     return text
