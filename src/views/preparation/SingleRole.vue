@@ -29,7 +29,7 @@
     </el-table>
     <div class="algoEquipment" style="width: 500px ;height: 400px;">
       <el-row>
-        角色：{{ getRoleName(role) }}
+        角色：{{ role.name }}
       </el-row>
       <el-row>
         刻印：<el-radio-group v-model="update">
@@ -52,20 +52,21 @@ import { ref, defineProps, defineEmits } from "vue";
 import { getRoleName } from '../tsUtils/groupInfo/data'
 import algorithmEquipment from "./algorithmEquipment.vue";
 import { initialData } from "../tsUtils/roleData/function"
+import { ListObj } from "../tsUtils/roleInfo/interface";
 
 const props = defineProps({
   role: {
-    type: String,
+    type: Object,
   },
   isRoleView: {
     type: Boolean,
   },
 });
 
-const role = ref(props.role as string)
+const role = ref(props.role as ListObj)
 const tableWidth = "85px";
 const update = ref(0)
-const { dockerList,algoData,algoStructure,saveData } = initialData(props.role as string)
+const { dockerList,algoData,algoStructure,saveData } = initialData(props.role as ListObj)
 
 
 const emits = defineEmits(["update:isRoleView"]);

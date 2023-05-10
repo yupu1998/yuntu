@@ -1,8 +1,9 @@
-import { simpleDamageTest } from '../dto/storageDtos'
+import { roleAllAttribute, simpleDamageTest } from '../dto/storageDtos'
 import {defaultTargetData} from '../store/defaultAttribute'
 import * as baseRole  from '../store/baseRole'
 import {GroupAndName} from '../dto/storageDtos'
 import {roleAlgos} from '../dto/algorithmDto'
+import { roleName } from './Chinese'
 
 /**
  * 本地存储的项目名称
@@ -30,17 +31,21 @@ export function initial() {
 const initialRoles = () =>{
     const roles = localStorage.getItem(LocalFileAdreess.ROLE_INFO)
     // console.log(roles);
-    // localStorage.setItem(LocalFileAdreess.ROLE_INFO,JSON.stringify(baseRole))
-    if (roles == null){//如果为空,初始化
-        localStorage.setItem(LocalFileAdreess.ROLE_INFO,JSON.stringify(baseRole))
+    // const newRoles:roleAllAttribute[] = []
+    //     for (const i in roleName){
+    //         newRoles.push(baseRole[i])
+    //     }
+    //     localStorage.setItem(LocalFileAdreess.ROLE_INFO,JSON.stringify(newRoles))
+    if ((roles == null)){//如果为空,初始化
+        const newRoles:roleAllAttribute[] = []
+        for (const i in roleName){newRoles.push(baseRole[i])}
+        localStorage.setItem(LocalFileAdreess.ROLE_INFO,JSON.stringify(newRoles))
     }else{
-        const baseRoles = JSON.parse(roles)
-        for (const role of Object.keys(baseRole)){//检查本地存储是否是最新版数据，不存在即更新
-            if ( !Object.keys(baseRoles).includes(role)){
-                baseRoles[role] = baseRole[role]
-            }
+        const Roles:roleAllAttribute[] = JSON.parse(roles)
+        for (const i in roleName){
+            if(Roles.find(role=>role.code == i)==undefined){Roles.push(baseRole[i])}
         }
-        localStorage.setItem(LocalFileAdreess.ROLE_INFO,JSON.stringify(baseRoles))
+        localStorage.setItem(LocalFileAdreess.ROLE_INFO,JSON.stringify(Roles))
     }
 }
 /**
@@ -86,20 +91,24 @@ const initialSingleTargetTestData = () =>{
  * 初始化人形算法数据
  */
 const initialAllRoleAlgo = () =>{
+    //获取人形信息
+    const roles = localStorage.getItem(LocalFileAdreess.ROLE_INFO) as string
+    const Roles:roleAllAttribute[] = JSON.parse(roles)
+
     const allRoleAlgo = localStorage.getItem(LocalFileAdreess.ROLE_ALGO)
     if (allRoleAlgo == null){
         const tmp = {} as { [key: string]: roleAlgos }
-        for (const role of Object.keys(baseRole)){//获取所有人形的Code
-            tmp[role] = {A:[],B:[],C:[]}
-        }
+        Roles.forEach(role =>{
+            tmp[role.name] = {A:[],B:[],C:[]}
+        })
         localStorage.setItem(LocalFileAdreess.ROLE_ALGO,JSON.stringify(tmp))
     }else{
         const tmp = JSON.parse(allRoleAlgo) as { [key: string]: roleAlgos }
-        for (const role of Object.keys(baseRole)){//检查本地存储是否是最新版数据，不存在即更新
-            if ( !Object.keys(tmp).includes(role)){
-                tmp[role] = {A:[],B:[],C:[]}
+        Roles.forEach(role =>{
+            if ( !Object.keys(tmp).includes(role.name)){
+                tmp[role.name] = {A:[],B:[],C:[]}
             }
-        }
+        })
         localStorage.setItem(LocalFileAdreess.ROLE_ALGO,JSON.stringify(tmp))
     }
 }

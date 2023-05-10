@@ -76,6 +76,7 @@ export function getroleTotalAttribute (){
 export function getroleAllAttribute(){
   const Data:roleAllAttribute = {
     hp: 0,
+    code:"",
     attack: 0,
     power: 0,
     physicalDefense: 0,

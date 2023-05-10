@@ -15,8 +15,8 @@ import noadd from '../../../image/png/algo_no_add.png'
  */
 export const getRoleAlgoInfo = (code:string,occupation:string)=>{
     const localInfoData = localStorage.getItem(LocalFileAdreess.ROLE_ALGO) as string;
-    const allAlgoInfo = JSON.parse(localInfoData) as{ [key: string]: roleAlgos }
-    
+    const allAlgoInfo = JSON.parse(localInfoData) as{ [key: string]: roleAlgos }//TODO
+
     const res:roleAlgoObj = {
         A:{
             number:AAlgoNumber[occupation],

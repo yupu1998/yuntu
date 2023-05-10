@@ -8,16 +8,17 @@ import { roleAttribution, listObj, getroleBaseAttribute, getRoleTotalAttribute }
 import { getRoleAlgoFunc } from '../../tsUtils/algoData/function'
 import { algoDataToArr } from '../../tsUtils/algoInfo/function'
 import { roleAlgoObj, algoDraw, algoPort, areaType, portType } from '../../tsUtils/algoData//interface'
+import { ListObj } from '../roleInfo/interface';
 
 // 需要取整的属性
 const INTAttr:RoleNumberAttribute[] = [RoleNumberAttribute.RECOVERY_5, RoleNumberAttribute.ATTACK_SPEED, RoleNumberAttribute.HP,RoleNumberAttribute.RESISTANCE,
 RoleNumberAttribute.ATTACK, RoleNumberAttribute.PHYSICAL_PENETRATION, RoleNumberAttribute.PHYSICAL_DEFENSE,
 RoleNumberAttribute.POWER, RoleNumberAttribute.POWER_PENETRATION, RoleNumberAttribute.POWER_DEFENSE]
 
-export const initialData = (code: string) => {
-  console.log(code);
+export const initialData = (role: ListObj) => {
+  // console.log(role);
 
-  const roleData = selectRole(code)
+  const roleData = selectRole(role)
   console.log(roleData);
 
   const defaultData: roleAllAttribute = roleData.baseData;
@@ -25,7 +26,7 @@ export const initialData = (code: string) => {
   const favoriteData: roleTotalAttribute = getIncrease(defaultData, roleData.favoriteData);//好感度加成
   const rolefinalData = ref(roleData.localData)
   //角色装备信息
-  const { algoData, algoStructure, saveAlgo } = getRoleAlgoFunc(code, rolefinalData.value.occupation as string)
+  const { algoData, algoStructure, saveAlgo } = getRoleAlgoFunc(role.name, rolefinalData.value.occupation as string)
   const algoIncreaseData = getAlgoIncrease(defaultData, algoData.value)//算法加成
 
   const data: Array<listObj> = []
@@ -67,7 +68,7 @@ export const initialData = (code: string) => {
     for (const newdata of dockerList.value) {
       rolefinalData.value[RoleNumberAttribute[newdata.code]] = newdata.final;
     }
-    updateRoleData(code, rolefinalData.value)
+    updateRoleData(role.name, rolefinalData.value)
     saveAlgo()
   }
   watch(

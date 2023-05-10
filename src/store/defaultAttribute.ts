@@ -7,6 +7,7 @@ import {Occupation,IsLong,AttentionPosition,Camp} from '../enum/baseEnum'
 export const defaultTargetData:roleAllAttribute = 
 {
     "name":"靶子",
+    "code":"aimTarget",
     "range":4,
     "hp":100000,
     "attack":5000,

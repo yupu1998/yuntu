@@ -5,6 +5,7 @@ import {roleName} from '../enum/Chinese'
 
 export const ZANGYIN:roleAllAttribute = {
         "name":roleName.ZANGYIN,
+        "code":"ZANGYIN",
         "range":4,
         "hp":11671,
         "attack":460,
@@ -45,6 +46,7 @@ export const ZANGYIN:roleAllAttribute = {
 
 export const KURO:roleAllAttribute = {
     "name":roleName.KURO,
+    "code":"KURO",
     "range":4,
     "hp":11671,
     "attack":460,

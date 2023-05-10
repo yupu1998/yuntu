@@ -10,7 +10,7 @@ import { A_AlgoSuit } from "../../../enum/algorithmEnum"
 export const getRoleAlgoFunc = (role: string, occupation: string) => {
     const algoData = ref(getRoleAlgoInfo(role, occupation))
     //检查算法结构，画图
-    console.log(algoData.value);
+    // console.log(algoData.value);
     const algoStructure = ref({
         A: analysis(algoData.value.A),
         B: analysis(algoData.value.B),

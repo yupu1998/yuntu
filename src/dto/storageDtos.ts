@@ -78,6 +78,7 @@ export interface roleTotalAttribute extends roleBaseAttribute {
 }
 /**
  * name:名字
+ * code:人形模板
  * occupation: 职业
  * isLong: 近战/远程
  * attentionPosition: 立场 （友方，敌方，中立）
@@ -86,6 +87,7 @@ export interface roleTotalAttribute extends roleBaseAttribute {
  */
 export interface roleAllAttribute extends roleTotalAttribute{
   name: string,
+  code: string,
   occupation: Occupation,
   isLong: IsLong,
   attentionPosition: AttentionPosition,
